@@ -1,19 +1,15 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
-import { PokeClient } from './clients';
+import { usePokemon } from './hooks';
 
-function App() {
-  useEffect(() => {
-    (async () => {
-      console.log(await PokeClient.getById(1));
-    })();
-  }, []);
+const App = () => {
+  const pokemon = usePokemon(1);
 
   return (
-    <div>
-      app
-    </div>
+    <main>
+      <h1>{ pokemon?.name }</h1>
+    </main>
   );
-}
+};
 
 export default App;
