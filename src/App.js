@@ -1,13 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { usePokemon } from './hooks';
 
 const App = () => {
-  const pokemon = usePokemon(1);
+  const [id, setId] = useState('')
+  const pokemon = usePokemon(id);
 
   return (
-    <main>
-      <h1>{ pokemon?.name }</h1>
+    <main className='app'>
+      <h1>{pokemon?.name}</h1>
+      <input maxLength={1} onChange={e => { setId(e.target.value); }} />
     </main>
   );
 };
